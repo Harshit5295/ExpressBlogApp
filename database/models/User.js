@@ -7,7 +7,7 @@ const userBasicProfile = new mongoose.Schema({
     password : {type: String, required: [true, 'Please provide Password']}
 })
 
-const dashboardSchema = new mongoose.Schema({
+/* const dashboardSchema = new mongoose.Schema({
     profileImageUrl : String,
     dateOfBirth : String,
     contactNumber : String,
@@ -38,7 +38,7 @@ const dashboardSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
     basicDetails : userBasicProfile, 
     additionaDetails : dashboardSchema
-})
+}) */
 
 userBasicProfile.pre('save', function(next){
     const user = this;
@@ -48,4 +48,4 @@ userBasicProfile.pre('save', function(next){
     })
 })
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userBasicProfile);

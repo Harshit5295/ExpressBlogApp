@@ -63,7 +63,7 @@ app.get('/contact', contactController);
 app.get('/register', authRedirect, registerController);
 app.get('/login', authRedirect, loginController);
 app.get('/logout', auth, authLogoutController);
-app.get('/dashboard', auth, dashBoardController);
+app.get('/dashboard', auth, authRedirect, dashBoardController);
 
 app.post('/posts/store', auth, storePost, storePostController);
 app.post('/users/register', authRedirect, storeUserController);

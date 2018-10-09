@@ -1,7 +1,7 @@
 const User = require('../database/models/User');
 
 module.exports = async(req, res) => {
-    const users = await User.findOne({"_id" : "5bbc9c0d992ae0737d014e2b"})
+    const users = await User.findOne({"username" : "Harshit"})
     console.log(users);
     res.render('dashboard', {
         users

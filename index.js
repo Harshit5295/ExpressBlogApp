@@ -8,6 +8,7 @@ const connectMongo = require('connect-mongo');
 const connectFlash = require('connect-flash');
 const edge = require('edge.js');
 const cloudinary = require('cloudinary');
+
 const createPostController = require('./controllers/createPost');
 const homePageController = require('./controllers/homePage');
 const storePostController = require('./controllers/storePost');
@@ -19,9 +20,12 @@ const registerController = require('./controllers/createUser');
 const loginController = require('./controllers/loginController');
 const checkLoginController = require('./controllers/checkLogin');
 const authLogoutController = require('./controllers/logoutController');
+const dashBoardController = require('./controllers/getDashboard');
+
 const storePost = require('./middleware/storePost');
 const authRedirect = require('./middleware/redirectAuth');
 const auth = require('./middleware/auth');
+
 const app = new express();
 const mongoStore = connectMongo(expressSession);
 
@@ -59,9 +63,12 @@ app.get('/contact', contactController);
 app.get('/register', authRedirect, registerController);
 app.get('/login', authRedirect, loginController);
 app.get('/logout', auth, authLogoutController);
+app.get('/dashboard', auth, dashBoardController);
+
 app.post('/posts/store', auth, storePost, storePostController);
 app.post('/users/register', authRedirect, storeUserController);
 app.post('/users/login', authRedirect, checkLoginController);
+
 app.use((req, res) => res.render('not-found'));
 
 

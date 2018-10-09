@@ -1,0 +1,35 @@
+@layout('layouts.app')
+
+@section('content')
+
+        <!-- Page Header -->
+        <header class="masthead" style="background-image: url('img/about-bg.jpg')">
+            <div class="overlay"></div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                  <div class="page-heading">
+                    <h1>Your Dashboard</h1>
+                    <span class="subheading">Your complete profile here.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+      
+          <!-- Main Content -->
+          <div class="container">
+            <div class="row">
+                @each(user in users)
+                    <div>
+                        <h4>Your Basic Details</h4>
+                        <p>Name : {{user.username}}</p>
+                        <p>Email : {{user.email}}</p>
+                    </div>
+                @endeach
+            </div>
+          </div>
+      
+          <hr>
+
+@endsection

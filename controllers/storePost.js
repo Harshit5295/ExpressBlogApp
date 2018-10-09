@@ -14,9 +14,16 @@ module.exports = (req, res) => {
             Post.create({
                 ...req.body,
                 image: result.secure_url,
-                author: req.session.userId
+                author: req.session.userId 
             }, (error,post) => {
-                res.redirect('/')
+                if(error) {
+                    res.send({
+                        statusCode : 500,
+                        message : "Internal Server Error"
+                    })
+                } else {
+                    res.redirect('/')
+                }
             });
         });
     });
